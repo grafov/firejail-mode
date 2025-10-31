@@ -1,0 +1,67 @@
+#+title: firejail-mode for GNU/Emacs
+
+*firejail-mode* is a major mode for editing [[https://firejail.wordpress.com/][Firejail]] security profile files in GNU/Emacs.
+
+* Features
+
+- Syntax highlighting for Firejail directives and options
+- Comment support (comments start with =#=)
+- SMIE-based indentation
+- Font-lock highlighting for:
+  - Firejail keywords (directives, options, private options, etc.)
+  - Comments
+  - Path macros (e.g., =${HOME}=, =${DESKTOP}=)
+  - File paths
+
+* Installation
+
+** Manual Installation
+
+1. Copy =firejail-mode.el= to your Emacs load path (e.g., =~/.emacs.d/lisp/=)
+2. Add to your =~/.emacs= or =~/.emacs.d/init.el=:
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(require 'firejail-mode)
+#+END_SRC
+
+** Using package.el
+
+If you plan to distribute via MELPA or similar:
+
+#+BEGIN_SRC emacs-lisp
+(package-install 'firejail-mode)
+#+END_SRC
+
+* Usage
+
+The mode automatically activates for files with =.profile= extension.
+
+You can also manually activate it:
+
+#+BEGIN_SRC emacs-lisp
+M-x firejail-mode
+#+END_SRC
+
+* Supported Keywords
+
+The mode recognizes all major Firejail directives and options:
+
+- Directives: =include=, =blacklist=, =whitelist=, =noblacklist=, =nowhitelist=, =mkdir=, =mkfile=, =ignore=
+- Options: =apparmor=, =seccomp=, =net=, =netfilter=, =protocol=, etc.
+- Private options: =private-bin=, =private-tmp=, =private-etc=, etc.
+- DBUS options: =dbus-user=, =dbus-system=, etc.
+- Landlock options: =landlock.fs.read=, =landlock.fs.write=, etc.
+- And many more...
+
+* Requirements
+
+- GNU Emacs 25.1 or later
+
+* License
+
+GNU General Public License version 3 or later.
+
+* Links
+
+- [[https://github.com/netblue30/firejail][Firejail Project]]
